@@ -1,37 +1,161 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin</title>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       <link rel="stylesheet" href="./assets/css/style.css"></link>
-  </head>
-</head>
-<body >
+  <title>Admin Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
     
-        <?php
-            include "./adminHeader.php";
-            include "./sidebar.php";
-           
-            include_once "./config/dbconnect.php";
-        ?>
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .container h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    
+    .container .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .container label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .container input[type="text"],
+    .container input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+    }
+    
+    .container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: none;
+      background-color: green;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    .container input[type="submit"]:hover {
+      background-color: orange;
+    }
 
-       <nav style="align-content: center;">
-           <div style="align-content: center;">
-               <h3 style="text-align:center; font-size: 25px;">CAREER GUIDANCE APP</h3>
-           </div>
-       </nav>
-            
-        
+    /* Responsive Header Styles */
+    .header {
+      background-color: orange;
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      justify-content: center; /* Added property */
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .nav {
+    display: flex;
+    justify-content: flex-end; /* Updated property */
+    margin-top: 20px;
+  }
 
 
-    <script type="text/javascript" src="./assets/js/ajaxWork.js"></script>    
-    <script type="text/javascript" src="./assets/js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 600px) {
+      .header h1 {
+        font-size: 20px;
+      }
+
+      .menu-toggle {
+        display: block;
+        text-align: right;
+        cursor: pointer;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .nav.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav.active {
+      /* ... existing styles ... */
+      justify-content: flex-start; /* Updated property */
+    }
+    }
+  </style>
+  <!-- Include Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Career Guidance App Admin Panel</h1>
+    
+  </header>
+  <div class="container">
+    <h2><i class="fas fa-user-lock"></i> <br>Admin Login</h2>
+    <form action="#" onsubmit="submitForm(); return false;">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      </div>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <script>
+    // Toggle navigation menu for small screens
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    function submitForm() {
+      // Perform form submission logic here
+
+      // Redirect to the desired page after submission
+      window.location.href = "admin.php";
+    }
+  </script>
 </body>
- 
 </html>

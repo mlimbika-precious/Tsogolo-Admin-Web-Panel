@@ -12,7 +12,7 @@
     <!-- Logout Button -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="login.php" style="color: white;">
+            <a class="nav-link" href="index.php" style="color: white;">
                 <i class="fa fa-sign-out" style="margin-right: 5px;"></i>
                 Logout
             </a>
