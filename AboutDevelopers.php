@@ -84,7 +84,7 @@
             include "./adminHeader.php";
             include "./sidebar.php";
            
-            include_once "./config/dbconnect.php";
+            //include_once "./config/dbconnect.php";
         ?>
         <h3 style="text-align: center;">About Developers</h3>
 
