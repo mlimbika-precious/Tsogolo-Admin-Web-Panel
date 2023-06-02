@@ -7,7 +7,7 @@
 
 <hr style="border:1px solid; background-color:orange; border-color:white;">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
-    <a href="./index.html" style="font-size: smaller;"><i class="fa fa-home"></i> Dashboard</a>
+    <a href="./admin.php" style="font-size: smaller;"><i class="fa fa-home"></i> Dashboard</a>
     <a href="" style="font-size: smaller;" onclick="toggleSubcategory(event, 'addPersonalityQuestionsSubcategory')"><i class="fa fa-question"></i>Personality Questions</a>
 <div id="addPersonalityQuestionsSubcategory" style="display: none;">
     <a href="AddPersonalityQuestions.php" style="font-size: smaller;"><i class="fa fa-angle-right"></i> Add Questions</a>
