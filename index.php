@@ -5,11 +5,13 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-image: url('career.png');
+      background-repeat: no-repeat;
+      background-size: cover;
       margin: 0;
       padding: 0;
     }
-    
+
     .container {
       max-width: 400px;
       margin: 40px auto;
@@ -78,10 +80,10 @@
     }
 
     .nav {
-    display: flex;
-    justify-content: flex-end; /* Updated property */
-    margin-top: 20px;
-  }
+      display: flex;
+      justify-content: flex-end; /* Updated property */
+      margin-top: 20px;
+    }
 
 
     .nav a {
@@ -113,9 +115,9 @@
       }
 
       .nav.active {
-      /* ... existing styles ... */
-      justify-content: flex-start; /* Updated property */
-    }
+        /* ... existing styles ... */
+        justify-content: flex-start; /* Updated property */
+      }
     }
   </style>
   <!-- Include Font Awesome -->
@@ -124,7 +126,6 @@
 <body>
   <header class="header">
     <h1>Career Guidance App Admin Panel</h1>
-    
   </header>
   <div class="container">
     <h2><i class="fas fa-user-lock"></i> <br>Admin Login</h2>
