@@ -5,17 +5,19 @@
   <style>
     /* CSS styling for the form */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      font-family: !important;
+      background-color: dimgray;
     }
     
    
     
 
     form {
-      width: 400px;
+      width: 600px;
       margin: 0 auto;
-      background-color: #fff;
+      background-color: #ffffff;
       padding: 20px;
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -54,7 +56,7 @@
     }
 
     input[type="submit"]:hover {
-      background-color: #45a049;
+    background-color: #ff6600; /* Orange color */
     }
   </style>
   <head>
@@ -70,35 +72,35 @@
         <?php
             include "./adminHeader.php";
             include "./sidebar.php";
+            include "./footer.php";
            
             //include_once "./config/dbconnect.php";
         ?>
 
        
   <br>
-      <h1 style="text-align: center;">Personality Questions</h1>
+      <h1 style="text-align: center; font-size: 16px;">Personality Questions</h1>
     
   
 
   <form>
-    <label for="id">ID              :</label>
-    <input type="text" id="id" name="id" required><br>
-
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required oninput="validateInput(this)" maxlength="3"><br>
+    
     <label for="question">Question          :</label>
     <textarea id="question" name="question" required></textarea><br>
 
-    <label for="agreeType">Agree Type:</label>
-    <input type="text" id="agreeType" name="agreeType" required><br>
+   <label for="agreeType">Agree Type:</label>
+<input type="text" id="agreeType" name="agreeType" required oninput="validateInput(this)" maxlength="1"><br>
+<span id="error-message" style="color: red; display: none;">Please enter a single alphabetic character.</span>
+<span id="lowercase-message" style="color: red; display: none;">Please use uppercase letters only.</span>
 
-    <label for="denialType">Denial Type:</label>
-    <input type="text" id="denialType" name="denialType" required><br>
+<label for="denialType">Denial Type:</label>
+<input type="text" id="denialType" name="denialType" required oninput="validateInput(this)" maxlength="1"><br>
+<span id="error-message" style="color: red; display: none;">Please enter a single alphabetic character.</span>
+<span id="lowercase-message" style="color: red; display: none;">Please use uppercase letters only.</span><br>
 
-    <label for="update">Update:</label>
-    <input type="checkbox" id="update" name="update"><br>
-
-    <label for="delete">Delete:</label>
-    <input type="checkbox" id="delete" name="delete">
-
+    
     <div class="center">
       <input type="submit" value="Save">
     </div>
@@ -115,3 +117,20 @@
 </body>
  
 </html>
+<script>
+function validateInput(input) {
+  var value = input.value;
+
+  if (value.length !== 1 || !/^[A-Za-z]$/.test(value)) {
+    document.getElementById('error-message').style.display = 'block';
+  } else {
+    document.getElementById('error-message').style.display = 'none';
+
+    if (value.toLowerCase() === value) {
+      document.getElementById('lowercase-message').style.display = 'block';
+    } else {
+      document.getElementById('lowercase-message').style.display = 'none';
+    }
+  }
+}
+</script>

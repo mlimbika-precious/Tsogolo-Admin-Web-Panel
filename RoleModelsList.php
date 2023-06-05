@@ -15,7 +15,7 @@
         <?php
             include "./adminHeader.php";
             include "./sidebar.php";
-           
+                include "./footer.php";
            // include_once "./config/dbconnect.php";
         ?>
 

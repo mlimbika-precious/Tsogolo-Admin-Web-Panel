@@ -105,8 +105,8 @@
         <?php
             include "./adminHeader.php";
             include "./sidebar.php";
-           
-            include_once "./config/dbconnect.php";
+                include "./footer.php";
+            //include_once "./config/dbconnect.php";
         ?>
         <h3 style="text-align: center;"> Add Role Models</h3>
 

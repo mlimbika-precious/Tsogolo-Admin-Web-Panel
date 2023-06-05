@@ -13,7 +13,7 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: cursive;
+      font-family:!important;
         }
 
     
@@ -68,13 +68,14 @@
         <?php
             include "./adminHeader.php";
             include "./sidebar.php";
+            include "./footer.php";
            
             //include_once "./config/dbconnect.php";
         ?>
 
        
           <main>
-    <h2 style="text-align: center;">Question List</h2>
+    <h2 style="text-align: center; font-size:30px">Question List</h2>
 
 
         <table >
