@@ -13,6 +13,7 @@
     <a href="AddPersonalityQuestions.php" style="font-size: smaller;"><i class="fa fa-angle-right"></i> Add Questions</a>
     <a href="personalityQuestionsList.php" style="font-size: smaller;"><i class="fa fa-angle-right"></i> Questions List</a>
 </div>
+<!--
 <a href="" style="font-size: smaller;" onclick="toggleSubcategory(event, 'personalityQuestionsListSubcategory')"><i class="fas fa-briefcase"></i>Careers</a>
 <div id="personalityQuestionsListSubcategory" style="display: none;">
     <a href="Subcategory3.php" style="font-size: smaller;"><i class="fa fa-angle-right"></i> Add Career</a>
@@ -30,7 +31,7 @@
 </div>
 <a href="" style="font-size: smaller;" onclick="toggleSubcategory(event, 'aboutDevelopersSubcategory')"><i class="fas fa-info"></i> About</a>
 <div id="aboutDevelopersSubcategory" style="display: none;">
-    <a href="AboutDevelopers.php" style="font-size: smaller;"><i class="fa fa-angle-right"></i>Developers</a>
+    <a href="AboutDevelopers.php" style="font-size: smaller;"><i class="fa fa-angle-right"></i>Developers</a> -->
    
 </div>
 
