@@ -1,3 +1,49 @@
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Extract the form data
+  $question = $_POST['question'];
+  $agreeType = $_POST['agreeType'];
+  $denialType = $_POST['denialType'];
+
+  // Create an associative array with the form data
+  $formData = [
+    'question' => $question,
+    'agreeType' => $agreeType,
+    'denialType' => $denialType
+  ];
+
+  // Convert the form data to JSON
+  $jsonData = json_encode($formData);
+
+  // Set the API endpoint URL
+  $apiUrl = 'https://tsogoloapi-production.up.railway.app/personality-questions/';
+
+  // Create a new cURL resource
+  $curl = curl_init($apiUrl);
+
+  // Set the cURL options
+  curl_setopt($curl, CURLOPT_POST, true);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonData);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+
+  // Execute the cURL request
+  $response = curl_exec($curl);
+
+  // Check for errors
+  if ($response === false) {
+    echo 'Error: ' . curl_error($curl);
+  } else {
+    // Handle the API response
+    echo 'API response: ' . $response;
+  }
+
+  // Close the cURL resource
+  curl_close($curl);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +65,9 @@
       padding: 20px;
       border-radius: 4px;
       box-shadow: 0 2px 4px rgba(2, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     label {
@@ -53,6 +102,14 @@
       cursor: pointer;
     }
 
+    .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust this value if needed */
+  }
+
+
     input[type="submit"]:hover {
       background-color: #ff6600; /* Orange color */
     }
@@ -73,7 +130,8 @@
   <br>
   <h1 style="text-align: center; font-size: 16px;">Personality Questions</h1>
 
-  <form action="your-url-for-processing-form-data" method="POST">
+  <div class="form-container">
+  <form id="personalityQuestionForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
     <label for="question">Question:</label>
     <textarea id="question" name="question" required></textarea><br>
 
@@ -88,9 +146,10 @@
     <span id="lowercase-message-denial" style="color: red; display: none;">Please use uppercase letters only.</span><br>
 
     <div class="center">
-      <input type="submit" value="Save">
+      <input type="submit" name = "Submit" value="Save">
     </div>
   </form>
+  </div>
 
   <script type="text/javascript">
     function validateInput(input) {
@@ -117,5 +176,25 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+  <script>
+function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+
+    function toggleSubcategory(event, subcategoryId) {
+      event.preventDefault();
+      var subcategory = document.getElementById(subcategoryId);
+      if (subcategory.style.display === "none") {
+        subcategory.style.display = "block";
+      } else {
+        subcategory.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
