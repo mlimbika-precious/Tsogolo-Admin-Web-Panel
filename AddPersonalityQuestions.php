@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $jsonData = json_encode($formData);
 
   // Set the API endpoint URL
-  $apiUrl = 'https://tsogoloapi-production.up.railway.app/personality-questions/';
+  $apiUrl = 'http://localhost:3000/personality-questions/';
 
   // Create a new cURL resource
   $curl = curl_init($apiUrl);
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust this value if needed */
+    height: 80vh; /* Adjust this value if needed */
   }
 
 
@@ -127,28 +127,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //include_once "./config/dbconnect.php";
   ?>
 
-  <br>
-  <h1 style="text-align: center; font-size: 16px;">Personality Questions</h1>
+  <!-- <br> -->
+  <!-- <h1 style="text-align: center; font-size: 16px;">Personality Questions</h1> -->
 
   <div class="form-container">
-  <form id="personalityQuestionForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-    <label for="question">Question:</label>
-    <textarea id="question" name="question" required></textarea><br>
+  <script>
+  function validateInput(input) {
+    var errorMessage = input.id === "agreeType" ? "lowercase-message-agree" : "lowercase-message-denial";
+    var uppercasePattern = /^[A-Z]+$/;
+    var isUppercase = uppercasePattern.test(input.value);
 
-    <label for="agreeType">Agree Type:</label>
-    <input type="text" id="agreeType" name="agreeType" required oninput="validateInput(this)" maxlength="1"><br>
-    <span id="error-message-agree" style="color: red; display: none;">Please enter a single alphabetic character.</span>
-    <span id="lowercase-message-agree" style="color: red; display: none;">Please use uppercase letters only.</span>
+    if (isUppercase) {
+      document.getElementById(errorMessage).style.display = "block";
+    } else {
+      document.getElementById(errorMessage).style.display = "none";
+    }
+  }
 
-    <label for="denialType">Denial Type:</label>
-    <input type="text" id="denialType" name="denialType" required oninput="validateInput(this)" maxlength="1"><br>
-    <span id="error-message-denial" style="color: red; display: none;">Please enter a single alphabetic character.</span>
-    <span id="lowercase-message-denial" style="color: red; display: none;">Please use uppercase letters only.</span><br>
+  function validateForm(event) {
+    var agreeType = document.getElementById("agreeType").value;
+    var denialType = document.getElementById("denialType").value;
+    var uppercasePattern = /^[A-Z]+$/;
+    var isAgreeUppercase = uppercasePattern.test(agreeType);
+    var isDenialUppercase = uppercasePattern.test(denialType);
 
-    <div class="center">
-      <input type="submit" name = "Submit" value="Save">
-    </div>
-  </form>
+    if (isAgreeUppercase && isDenialUppercase) {
+      
+      alert("Submitted successful");
+    }else{
+      event.preventDefault();
+      alert("please use uppercase letter")
+    }
+  }
+</script>
+
+<form id="personalityQuestionForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" onsubmit="validateForm(event)">
+<h4>Personality Questions<h2>
+</br>  
+
+<label for="question">Question:</label>
+  <textarea id="question" name="question" required></textarea><br>
+
+  <label for="agreeType">Agree Type:</label>
+  <input type="text" id="agreeType" name="agreeType" required oninput="validateInput(this)" maxlength="1"><br>
+  <span id="error-message-agree" style="color: red; display: none;">Please enter a single alphabetic character.</span>
+  <span id="lowercase-message-agree" style="color: red; display: none;">Please use uppercase letters only.</span>
+
+  <label for="denialType">Denial Type:</label>
+  <input type="text" id="denialType" name="denialType" required oninput="validateInput(this)" maxlength="1"><br>
+  <span id="error-message-denial" style="color: red; display: none;">Please enter a single alphabetic character.</span>
+  <span id="lowercase-message-denial" style="color: red; display: none;">Please use uppercase letters only.</span><br>
+
+  <div class="center">
+    <input type="submit" name="Submit" value="Save">
+  </div>
+</form>
+
   </div>
 
   <script type="text/javascript">

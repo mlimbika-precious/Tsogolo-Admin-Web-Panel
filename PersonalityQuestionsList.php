@@ -70,7 +70,7 @@ include "./sidebar.php";
 include "./footer.php";
 
 // Set the API endpoint URL
-$apiUrl = 'https://tsogoloapi-production.up.railway.app/personality-questions/';
+$apiUrl = 'http://localhost:3000/personality-questions/';
 
 // Retrieve the submitted questions from the API
 $response = file_get_contents($apiUrl);
@@ -167,7 +167,7 @@ function openNav() {
 
     function deleteQuestion(questionId) {
   // Set the API endpoint URL
-  const apiUrl = 'https://tsogoloapi-production.up.railway.app/personality-questions/';
+  const apiUrl = 'http://localhost:3000/personality-questions/';
 
   // Set the HTTP request options
   const requestOptions = {
@@ -181,13 +181,17 @@ function openNav() {
   fetch(apiUrl + questionId, requestOptions)
     .then(response => {
       if (response.ok) {
-        // Question successfully deleted
-        console.log('Question deleted');
+        
 
+        // Question successfully deleted
+        alert('Question deleted');
+        location.reload();
+        
         // Remove the question from the form
         const questionRow = document.getElementById('questionRow_' + questionId);
         if (questionRow) {
           questionRow.remove();
+          
         } else {
           console.log('Question row not found.');
         }
